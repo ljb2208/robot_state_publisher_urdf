@@ -56,11 +56,7 @@ protected:
   tf2_ros::TransformBroadcaster tf_broadcaster_;
   tf2_ros::StaticTransformBroadcaster static_tf_broadcaster_;
 
-  std::string tf_prefix_;
-  Duration publish_interval_;  
-  Subscriber joint_state_sub_;
-  ros::Timer timer_;
-  ros::Time last_callback_time_;
+  std::string tf_prefix_;  
   std::map<std::string, ros::Time> last_publish_time_;
   MimicMap mimic_;
   bool use_tf_static_;

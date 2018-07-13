@@ -31,6 +31,10 @@ int main(int argc, char** argv)
     return -1;
   }
 
+  int publish_freq;
+
+  node.param<int>("publish_freq", publish_freq, 1);
+
   MimicMap mimic;
 
   for(std::map< std::string, urdf::JointSharedPtr >::iterator i = model.joints_.begin(); i != model.joints_.end(); i++) {
@@ -41,7 +45,7 @@ int main(int argc, char** argv)
 
   RobotStatePublisherURDF state_publisher(tree, model);
   //JointStateListener state_publisher(tree, mimic, model);
-  ros::Rate r(10);
+  ros::Rate r(publish_freq);
   while (ros::ok())
   {     
     state_publisher.publishFixedTransforms("", false);
